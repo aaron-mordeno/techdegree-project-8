@@ -41,9 +41,9 @@ function displayEmployees(employeeData) {
 function displayModal(index) {
   let name = index.name;
   let email = index.email;
-  // let city = index.location.city;
+  let city = index.location.city;
   let picture = index.picture;
-  // let date = new Date(dob.date);
+  let date = new Date(dob.date);
   const modalHTML = `
   <img class="avatar" src="${picture.large}" />
   <div class="text-container">
