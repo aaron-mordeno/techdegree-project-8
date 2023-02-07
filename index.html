@@ -10,6 +10,9 @@
   <body>
     <header>
       <h1>EMPLOYEE DIRECTORY</h1>
+      <div class="searchbar-wrapper">
+        <input type="search" id="searchbar" placeholder="Search users" />
+      </div>
     </header>
 
     <main class="grid-container">
@@ -120,26 +123,30 @@
           <p class="address">City</p>
         </div>
       </div>
+    </main>
 
-      <div class="overlay hidden">
-        <div class="modal">
-          <button class="modal-close">X</button>
-          <div class="modal-content">
-            <!-- modal information will be added with JS here -->
-            <img class="avatar" src="" />
-            <div class="text-container">
-              <h2 class="name">Firstname Lastname</h2>
-              <p class="email">email@example.com</p>
-              <p class="address">City</p>
-              <hr />
-              <p>Phone Number</p>
-              <p class="address">Address</p>
-              <p>Birthday: 01/01/23</p>
-            </div>
+    <div class="overlay">
+      <div class="modal">
+        <button class="modal-close">X</button>
+        <div class="modal-content">
+          <!-- modal information will be added with JS here -->
+          <img class="avatar" src="" />
+          <div class="text-container">
+            <h2 class="name">Firstname Lastname</h2>
+            <p class="email">email@example.com</p>
+            <p class="address">City</p>
+            <hr />
+            <p>Phone Number</p>
+            <p class="address">Address</p>
+            <p>Birthday: 01/01/23</p>
           </div>
         </div>
+        <section class="modal-nav">
+          <div class="modal-nav-text" id="previous-btn">PREVIOUS</div>
+          <div class="modal-nav-text" id="next-btn">NEXT</div>
+        </section>
       </div>
-    </main>
+    </div>
 
     <script src="app.js"></script>
   </body>

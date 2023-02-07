@@ -14,7 +14,7 @@ body {
 }
 
 .modal {
-  width: 375px;
+  width: 275px;
   margin: 15% auto auto;
   position: relative;
   text-align: center;
@@ -22,10 +22,6 @@ body {
   border: 1px solid #778;
   border-radius: 5px;
   padding: 30px 20px;
-}
-
-.hidden {
-  display: none;
 }
 
 .modal-close {
@@ -40,9 +36,39 @@ body {
   border: 2px solid #26262d;
 }
 
+.modal-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow: auto;
+  flex-direction: row;
+}
+
+.modal-nav-text {
+  width: 100px;
+  padding: 5px;
+  margin-top: 5px;
+  background-color: #add8e6;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 h1 {
   text-align: center;
   color: #42424a;
+}
+
+.searchbar-wrapper {
+  text-align: center;
+}
+
+#searchbar {
+  height: 35px;
+  min-width: 300px;
+  border-radius: 3px;
+  border: solid 1px #575757;
 }
 
 .grid-container {
@@ -51,12 +77,14 @@ h1 {
   grid-template-rows: repeat(11, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 20px;
+  margin: 20px auto;
 }
 
 .card {
   border: #26262d solid 1px;
   border-radius: 5px;
   max-height: 105px;
+  min-width: 305px;
   padding: 10px;
   text-align: center;
   margin: 0 auto;
@@ -88,16 +116,24 @@ h1 {
   font-weight: 400;
 }
 
+.hide {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   .grid-container {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(6, 1fr);
     grid-column-gap: 10px;
-    margin: 0 auto;
+    margin: 20px auto;
   }
 
   .card {
     min-width: 350px;
+  }
+
+  .modal {
+    width: 375px;
   }
 }
 
@@ -108,7 +144,11 @@ h1 {
   }
 
   .card {
-    min-width: 300px;
+    min-width: 325px;
+  }
+
+  #searchbar {
+    min-width: 400px;
   }
 }
 

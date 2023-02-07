@@ -4,6 +4,10 @@ const gridContainer = document.querySelector(".grid-container");
 const overlay = document.querySelector(".overlay");
 const modalContainer = document.querySelector(".modal-content");
 const modalClose = document.querySelector(".modal-close");
+let currentIndex = 0;
+const previousButton = document.getElementById("previous-btn");
+const nextButton = document.getElementById("next-btn");
+const searchbar = document.getElementById("searchbar");
 
 fetch(urlAPI)
   .then((res) => res.json())
@@ -53,12 +57,11 @@ function displayModal(index) {
   <p class="address">${city}</p>
   <hr />
   <p>${phone}</p>
-  <p class="address">${street}, ${state} ${postcode}</p>
+  <p class="address">${street.number} ${street.name}, ${state} ${postcode}</p>
   <p>Birthday:
-  ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+  ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}</p>
   </div>
   `;
-  console.log(`clicked ${index}`);
   modalContainer.innerHTML = modalHTML;
 }
 
@@ -66,10 +69,43 @@ gridContainer.addEventListener("click", (e) => {
   if (e.target !== gridContainer) {
     const card = e.target.closest(".card");
     const index = card.getAttribute("data-index");
+    currentIndex = parseInt(index);
     displayModal(index);
   }
 });
 
 modalClose.addEventListener("click", () => {
   overlay.style.display = "none";
+});
+
+previousButton.addEventListener("click", () => {
+  if (currentIndex === 0) {
+    currentIndex = 11;
+    displayModal(currentIndex);
+  } else {
+    currentIndex--;
+    displayModal(currentIndex);
+  }
+});
+
+nextButton.addEventListener("click", () => {
+  if (currentIndex === 11) {
+    currentIndex = 0;
+    displayModal(currentIndex);
+  } else {
+    currentIndex++;
+    displayModal(currentIndex);
+  }
+});
+
+searchbar.addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  let names = document.querySelectorAll(".card .name");
+  names.forEach((employee) => {
+    if (employee.textContent.toLowerCase().includes(value)) {
+      employee.parentNode.parentNode.style.display = "inline-block";
+    } else {
+      employee.parentNode.parentNode.style.display = "none";
+    }
+  });
 });
